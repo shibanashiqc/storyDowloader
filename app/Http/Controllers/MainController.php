@@ -159,6 +159,7 @@ class MainController extends Controller
          //  dd($matches3);
 
          if(empty($sdLink) && empty($hdLink)){
+            session()->flash('error', 'Something went wrong');
             return redirect()->back()->with('error','Invalid URL');
          }
 
