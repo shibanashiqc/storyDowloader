@@ -141,7 +141,7 @@ div.sub, iframe {
 
 <div id="all">
 
-<video id="video" width="40%" height="40%" controls autoplay>
+<video id="video" width="70%" height="40%" controls autoplay>
 <source src="{{ $data['sd'] }}" type="video/mp4">
 </video>
 <br>
@@ -153,7 +153,7 @@ div.sub, iframe {
 
 <div id="all">
 
-    <video id="video" width="40%" height="40%" controls autoplay>
+    <video id="video" width="70%" height="40%" controls autoplay>
     <source src="{{ $data['hd']  }}" type="video/mp4">
     </video>
     <br>
