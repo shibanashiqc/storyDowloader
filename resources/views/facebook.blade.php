@@ -146,7 +146,11 @@ div.sub, iframe {
 </video>
 <br>
 <br>
-<a class="btn btn-primary" href="{{ $data['sd']  }}">Download SD</a>
+{{--  <a class="btn btn-primary" href="{{ $data['sd']  }}">Download SD</a>  --}}
+<a href="{{ route('download', ['url' => $data['sd'],'type' => 'mp4'])}}" class="btn btn-primary" > Download SD</a>
+    </div>
+<br>
+<br>
 <br>
 <br>
 </div>
@@ -158,7 +162,8 @@ div.sub, iframe {
     </video>
     <br>
     <br>
-    <a class="btn btn-primary" href="{{ $data['hd']  }}">Download HD</a>
+    {{--  <a class="btn btn-primary" href="{{ $data['hd']  }}">Download HD</a>  --}}
+    <a href="{{ route('download', ['url' => $data['hd'],'type' => 'mp4'])}}" class="btn btn-primary" > Download HD</a>
 
     </div>
 

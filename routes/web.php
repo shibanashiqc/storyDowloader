@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('donwload', [MainController::class,'download']);
+Route::get('donwload', [MainController::class,'download'])->name('download');
 Route::get('youtube-downloader',[MainController::class,'youtube'])->name('youtube');
 Route::get('facebook-downloader',[MainController::class,'facebook'])->name('facebook');
 Route::get('instagram-downloader',[MainController::class,'instagram'])->name('instagram');

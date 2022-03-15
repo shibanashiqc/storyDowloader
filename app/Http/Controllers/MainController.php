@@ -48,7 +48,11 @@ class MainController extends Controller
             $video = $json['items'][0]['carousel_media'][0]['image_versions2']['candidates'][0]['url'];
             return view('instagram', [
                 'query' => $request->get('query'),
-                'data' => $video
+                'data' => [
+                    'video' => $video,
+                    'thumbnail' => $json['items'][0]['id'].'.jpg',
+                    'type' => 'jpg',
+                ]
             ]);
         }
 
@@ -57,6 +61,8 @@ class MainController extends Controller
             return redirect()->back()->with('error','No video found');
 
         }else{
+        $thumbnail = $json['items'][0]['image_versions2']['candidates'][0]['url'];
+        file_put_contents(public_path('/images/'.$json['items'][0]['id'].'.jpg'), file_get_contents($thumbnail));
         $video = $json['items'][0]['video_versions'][0]['url'];
         }
 
@@ -66,7 +72,11 @@ class MainController extends Controller
 
         return view('instagram', [
             'query' => $request->get('query'),
-            'data' => $video
+            'data' => [
+                'video' => $video,
+                'thumbnail' => $json['items'][0]['id'].'.jpg',
+                'type' => 'mp4'
+            ]
         ]);
 
         }else{
@@ -182,6 +192,10 @@ class MainController extends Controller
         $downloadOptions = $youtube->getDownloadLinks($request->get('query'));
 
 
+       // dd($downloadOptions->getAllFormats());
+     //  $data = $downloadOptions->getAllFormats();
+       //$type = explode(";",explode("/",$data[0]->mimeType)[1])[0];
+
 
         if ($downloadOptions->getAllFormats()) {
 
@@ -222,6 +236,20 @@ class MainController extends Controller
 
     public function download(Request $request)
     {
+        $url = $request->get('url');
+        $time = time();
+        $type = $request->get('type') ? $request->get('type') : 'mp4';
+        $fileName = $time.'.'.$type ;
+
+        if (!empty($url) && substr($url, 0, 8) === 'https://') {
+            header("Cache-Control: public");
+            header("Content-Description: File Transfer");
+            header("Content-Disposition: attachment;filename=\"$fileName\"");
+            header("Content-Transfer-Encoding: binary");
+            readfile($url);
+        } else {
+            session()->flash('error', 'Something went wrong');
+        }
 
 
 

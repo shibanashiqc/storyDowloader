@@ -140,9 +140,16 @@ div.sub, iframe {
 }</style>
 
 <div id="all">
+
+   <img src="{{ asset('images/'.$data['thumbnail']) }}" alt="" width="40%" height="10%">
     <p>Quality: High</p>
     {{--  <a class="btn btn-primary" onclick="window.location.href='{{ $datas->url }}'">Download</a>  --}}
- <a href="{{ $data }}" class="btn btn-primary" download="noopener noreferrer"  target="_blank"> Download</a>
+    <a href="{{ $data['video'] }}" class="btn btn-danger" download="noopener noreferrer"  target="_blank"> View</a>
+ <a href="{{ route('download', [
+    'url' => $data['video'],
+    'type' => $data['type'],
+ ])
+}}" class="btn btn-primary" > Download</a>
     </div>
 
 

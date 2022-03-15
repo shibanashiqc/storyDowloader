@@ -128,6 +128,10 @@
 @else
 
 @foreach ( $data as $datas )
+
+@php
+$type = explode(";",explode("/",$datas->mimeType)[1])[0];
+@endphp
     {{--  <div>
     <iframe height="200" width="300"; margin: 0 auto;
     src="https://www.youtube.com/embed/{{ $video_id }}">
@@ -152,7 +156,11 @@
         <div>
         <p style="color: red"> VideoQuality : {{ $datas->qualityLabel }} </p>
         {{--  <a class="btn btn-primary" onclick="window.location.href='{{ $datas->url }}'">Download</a>  --}}
-     <a href="{{ $datas->url }}" class="btn btn-primary" download="noopener noreferrer"  target="_blank"> Play & Download</a>
+        <a class="btn btn-primary" href="{{ route('download', [
+            'url' => $datas->url,
+            'type' => $type,
+        ]) }}" >Download</a>
+     {{--  <a href="{{ $datas->url }}" class="btn btn-primary" download="noopener noreferrer"  target="_blank"> Play & Download</a>  --}}
         </div>
 
 
