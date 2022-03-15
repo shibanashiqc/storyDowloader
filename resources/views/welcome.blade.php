@@ -123,7 +123,7 @@
 <div class="col-xs-12 hidden-md-down"></div>
 <div class="col-xs-12 text-xs-center">
 <h2 class="section-title text-color-primary" id="supported-sites-title">Welcome to Status Downloder </h2>
-<p class="text-color-secondary text-xs-center mt-2" style="font-size:20px;font-weight:lighter;max-width:600px;margin:auto">We do as our users demand. You can always tell us to add a site by dropping us a mail at <a href='mailto:contactvkr@yahoo.com'>contactvkr@yahoo.com</a>.</p>
+<p class="text-color-secondary text-xs-center mt-2" style="font-size:20px;font-weight:lighter;max-width:600px;margin:auto">We do as our users demand. You can always tell us to add a site by dropping us a mail at .</p>
 </div>
 
 <div class="col-xs-12 py-2 mt-2 rounded px-0">
