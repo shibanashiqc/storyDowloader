@@ -132,6 +132,7 @@
     width:100%;
     float:left;
     text-align:center;
+    margin-bottom: 10%
 }
 div.sub, iframe {
     margin: 0 auto;
@@ -149,12 +150,11 @@ div.sub, iframe {
 {{--  <a class="btn btn-primary" href="{{ $data['sd']  }}">Download SD</a>  --}}
 <a href="{{ route('download', ['url' => $data['sd'],'type' => 'mp4'])}}" class="btn btn-primary" > Download SD</a>
     </div>
-<br>
-<br>
+
+
 
 </div>
-<br>
-<br>
+
 <div id="all">
 
     <video id="video" width="70%" height="40%" controls autoplay>
