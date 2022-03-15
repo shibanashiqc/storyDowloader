@@ -240,13 +240,23 @@ class MainController extends Controller
         $time = time();
         $type = $request->get('type') ? $request->get('type') : 'mp4';
         $fileName = $time.'.'.$type ;
-
+        //Clear the cache
+        clearstatcache();
         if (!empty($url) && substr($url, 0, 8) === 'https://') {
-            header("Cache-Control: public");
-            header("Content-Description: File Transfer");
-            header("Content-Disposition: attachment;filename=\"$fileName\"");
-            header("Content-Transfer-Encoding: binary");
-            readfile($url);
+
+            //Define header information
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="'.basename($url).'"');
+            header('Pragma: public');
+
+            //Clear system output buffer
+            flush();
+            // header("Cache-Control: public");
+            // header("Content-Description: File Transfer");
+            // header("Content-Disposition: attachment;filename=\"$fileName\"");
+            // header("Content-Transfer-Encoding: binary");
+            readfile($url,true);
         } else {
             session()->flash('error', 'Something went wrong');
         }
