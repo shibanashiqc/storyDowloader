@@ -247,7 +247,7 @@ class MainController extends Controller
             //Define header information
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="'.basename($url).'".'.$type);
+            header('Content-Disposition: attachment; filename="'. $fileName.'"');
             header('Pragma: public');
 
             //Clear system output buffer
