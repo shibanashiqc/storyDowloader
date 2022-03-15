@@ -238,7 +238,7 @@ class MainController extends Controller
     {
         $url = $request->get('url');
         $time = time();
-        $type = $request->get('type') ? $request->get('type') : 'mp4';
+        $type = $request->get('type') ? $request->get('type') : '.mp4';
         $fileName = $time.'.'.$type ;
         //Clear the cache
         clearstatcache();
@@ -247,7 +247,7 @@ class MainController extends Controller
             //Define header information
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="'.basename($url).'"'.''.$type);
+            header('Content-Disposition: attachment; filename="'.basename($url).'"'.$type);
             header('Pragma: public');
 
             //Clear system output buffer
