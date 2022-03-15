@@ -245,18 +245,28 @@ class MainController extends Controller
         if (!empty($url) && substr($url, 0, 8) === 'https://') {
 
             //Define header information
-            header('Content-Description: File Transfer');
+            // header('Content-Description: File Transfer');
+            // header('Content-Type: application/octet-stream');
+            // header('Content-Disposition: attachment; filename="'. $5.'"');
+            // header('Pragma: public');
+            // header("Cache-Control: public");
+
+            header('Content-Description: File Tran  sfer');
             header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="'. $fileName.'"');
+            header("Cache-Control: no-cache, must-revalidate");
+            header("Expires: 0");
+            header('Content-Disposition: attachment; filename="'.basename($fileName).'"');
+           // header('Content-Length: ' . filesize($fileName));
             header('Pragma: public');
 
+
             //Clear system output buffer
-            flush();
+            //flush();
             // header("Cache-Control: public");
             // header("Content-Description: File Transfer");
             // header("Content-Disposition: attachment;filename=\"$fileName\"");
             // header("Content-Transfer-Encoding: binary");
-            readfile($url,true);
+            readfile($url);
         } else {
             session()->flash('error', 'Something went wrong');
         }
