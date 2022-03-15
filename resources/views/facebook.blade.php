@@ -151,10 +151,10 @@ div.sub, iframe {
     </div>
 <br>
 <br>
-<br>
-<br>
-</div>
 
+</div>
+<br>
+<br>
 <div id="all">
 
     <video id="video" width="70%" height="40%" controls autoplay>
