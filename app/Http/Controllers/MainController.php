@@ -158,6 +158,10 @@ class MainController extends Controller
                 }
          //  dd($matches3);
 
+         if(empty($sdLink) && empty($hdLink)){
+            return redirect()->back()->with('error','Invalid URL');
+         }
+
             return view('facebook', [
                 'query' => $request->get('query'),
                 'data' =>  [
